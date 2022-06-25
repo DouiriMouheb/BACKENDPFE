@@ -30,7 +30,7 @@ public class personnel {
     @Column(name="dateDeNaissance")
     private Date dateDeNaissance;
 
-    @Column(name="numeroCin")
+    @Column(name="numeroCin", unique = true)
     private  Long numeroCin;
     @Column(name="salaire")
     private  Long salaire;

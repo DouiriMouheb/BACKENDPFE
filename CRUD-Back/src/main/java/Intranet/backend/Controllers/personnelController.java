@@ -1,6 +1,7 @@
 package Intranet.backend.Controllers;
 
 
+import Intranet.backend.dto.message;
 import Intranet.backend.entites.personnel;
 import Intranet.backend.exception.ResourceNotFoundException;
 import Intranet.backend.repositories.personnelRepository;
@@ -25,8 +26,17 @@ public class personnelController {
     }
     // create personnel rest api
     @PostMapping("/personnels")
-    public personnel createpersonnel(@RequestBody personnel Personnel) {
+  /*  public personnel createpersonnel(@RequestBody personnel Personnel) {
         return PersonnelRepository.save(Personnel);
+    }*/
+    public message cretepersonnel(@RequestBody personnel Personnel )
+    {
+        if (PersonnelRepository.existsBynumeroCin(Personnel.getNumeroCin())){
+            return new message("This ID Number Exisits") ;
+        }
+
+        PersonnelRepository.save(Personnel);
+        return new message("New Employee added successfully !");
     }
 
     // get personnel by id rest api

@@ -13,4 +13,5 @@ public interface personnelRepository extends JpaRepository<personnel,Long> {
     @Query(value="Select Count * from personnel",nativeQuery = true)
 
     public List<personnel> getAllPersonnel();
+     boolean existsBynumeroCin(Long numeroCin) ;
 }
